@@ -34,5 +34,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy
-        run: echo "Deploying..."
+      - name: Récupération des artefacts du build
+        uses: actions/download-artifact@v4
+        with:
+          name: fichiers-site
+      - name: Liste des fichiers téléchargés
+        run: ls -l
+      - name: Simulation du déploiement
+        run: echo "Déploiement des fichiers du site sur le serveur..."
